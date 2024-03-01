@@ -1,4 +1,5 @@
 import React, {useContext,useState,useEffect} from 'react';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 import{NavigationContainer} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
@@ -25,9 +26,32 @@ const Routes = () =>{
 
     }
     useEffect(() => {
-        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-        return subscriber; // unsubscribe on unmount
-      }, []);
+      const configureGoogleSignIn = async () => {
+        try {
+          await GoogleSignin.configure({
+            webClientId: '797711938083-11mkoas7rocuc3692lk6u2tuclkenu2i.apps.googleusercontent.com',
+          });
+        } catch (error) {
+          console.error('Google Sign-In configuration error:', error);
+        }
+      };
+    
+      configureGoogleSignIn();
+    
+      const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+      return () => subscriber(); // unsubscribe on unmount
+    }, []);
+    
+
+        
+
+
+
+
+
+
+
+
       if (initializing)return null;
 
     return (
@@ -36,7 +60,7 @@ const Routes = () =>{
 
             { user ?<AppStack /> :<AuthStack/>}
 
-
+            
          </NavigationContainer>
 
 

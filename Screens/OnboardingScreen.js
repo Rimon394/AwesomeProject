@@ -2,7 +2,7 @@
 import {View,Text,StyleSheet,Dimensions}from 'react-native';
 import React from 'react';
 import Onboarding from 'react-native-onboarding-swiper';
-import Lottie from 'lottie-react-native';
+import LottieView from 'lottie-react-native';
 
 
 import { useNavigation } from '@react-navigation/native';
@@ -31,18 +31,18 @@ const handleDone=()=>{
                     image:(
                       <View  style={styles.lottie }>
                           
-                          <Lottie source={require('../assets/animation/animation_ll63dthy.json')} autoPlay loop />
+                          <LottieView source={require('../assets/animation/animation_ll63dthy.json')} autoPlay loop />
                       </View>
                     ),
                     title:'Hello',
-                    subtitle:'Welcome to this app to learn and comunicate '          
+                    subtitle:'Welcome to this app to learn and communicate  '          
               },
 
               {
                     backgroundColor:'#638467',
                     image:(
                       <View  style={styles.lottie }>                                            
-                     <Lottie source={require('../assets/animation/animation_ll63jjmi.json')} autoPlay loop />
+                         <LottieView source={require('../assets/animation/StudyAnimation.json')} autoPlay loop />
 
                   </View>
                     ),
@@ -55,7 +55,7 @@ const handleDone=()=>{
                     image:(
                       <View  style={styles.lottie }>
                         
-                        <Lottie source={require('../assets/animation/animation_ll639sd8.json')} autoPlay loop />
+                        <LottieView source={require('../assets/animation/animation_ll639sd8.json')} autoPlay loop />
                       </View>
                     ),
                     title:'Hand_Talk_app',
@@ -73,7 +73,7 @@ const handleDone=()=>{
 const styles=StyleSheet.create({
   container:{
     flex:1,
-    backgroundColor:'white',
+    
     paddinghorizontal:15,
 
   },

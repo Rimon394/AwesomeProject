@@ -5,7 +5,7 @@ import {View,Text,Button,StyleSheet} from 'react-native';
 const GameDetailsScreen =({navigation})=>{
     return (
       <View style={styles.container}>
-        <Text>Home Screen</Text>
+        <Text>Video Screen</Text>
         <Button title="Go Back"  onPress={()=> navigation.goBack()}/>
         
       </View>
@@ -16,7 +16,8 @@ const GameDetailsScreen =({navigation})=>{
       container:{
         flex:1,
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        backgroundColor:'#C3D7B9'
       },
 
 

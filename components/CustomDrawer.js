@@ -23,7 +23,7 @@ const { logout} = useContext(AuthContext);
         {...props}
         contentContainerStyle={{backgroundColor: '#638467'}}>
         <ImageBackground
-          source={require('../assets/images/menu-bg.jpeg')}
+          source={require('../assets/images/bg.jpg')}
           style={{padding: 20}}>
           <Image
             source={require('../assets/images/user-profile.jpg')}

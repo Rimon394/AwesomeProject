@@ -24,12 +24,12 @@ const SignupSchema = Yup.object().shape({
  
   email: Yup.string()
          .email('Invalid email')
-         .required('please enter your eamil address'),
+         .required('please enter your email address'),
   password:Yup.string()
     .min(8)
     .required('Please enter your Password.')
     .matches(   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-       'Must containe minimum * characters ,at least one uppercase letter, one lowercase letter ,One number and one special character '
+       'Use Storng Password '
     
     ),
   });
@@ -88,14 +88,14 @@ const {login} = useContext(AuthContext);
        
       email:'',
       password:'',
-      confirmPassword:'',
+     
            
 
     }}
       
     validationSchema={SignupSchema}
     onSubmit={values => {
-      // Call the register function with email and password
+      // Call the Login function with email and password
       login(values.email, values.password);
     }}
     
@@ -106,7 +106,7 @@ const {login} = useContext(AuthContext);
 
     
         <View style={styles.container}>
-          <StatusBar backgroundColor='#009387'barStyle='light-content'/>
+          <StatusBar backgroundColor='#638467'barStyle='light-content'/>
           <View style={styles.header}>
             <Text style={styles.text_header}>Welcome</Text>
           </View>
@@ -138,24 +138,6 @@ const {login} = useContext(AuthContext);
                   <Text style={styles.errorTxt}>{errors.email}</Text>
                 )}
 
-             {data.check_textInputChange ? 
-              <Animatable.View 
-                 animation='bounceIn'
-              
-              >
-
-
-               <Feather 
-               name='check-circle'
-               color='green'
-               size={20}
-             
-             />
-              </Animatable.View>
-
-
-
-             :null}
 
 
 
@@ -174,7 +156,7 @@ const {login} = useContext(AuthContext);
                secureTextEntry={data.secureTextEntry ? true:false}
                style={styles.textInput}
                autoCapitalize='none'
-               value={values.pass}
+               value={values.password}
                onChangeText={handleChange('password')}
                onBlur={()=>setFieldTouched('password')}
              
@@ -206,23 +188,29 @@ const {login} = useContext(AuthContext);
              
                </View>
 
+
+
+
              <View style={styles.button}>
               <TouchableOpacity
                     onPress={handleSubmit}>
 
               
               <LinearGradient
-                colors={['#3D6641','#638467']}
+                colors={['#638467','#638467']}
                 style={styles.signIn}
                >
                 <Text style={[styles.textSign,{color:'#fff'}]}>Sign In</Text>
               </LinearGradient>
               </TouchableOpacity>
+
+
+
               <TouchableOpacity
               
                 onPress={()=>navigation.navigate('Register')}
                 style={[styles.signIn,{
-                  borderColor:'#009387',
+                  borderColor:'#638467',
                   borderWidth:1,
 
                 marginTop:15
@@ -231,7 +219,7 @@ const {login} = useContext(AuthContext);
               >
                   <Text
                    style={[styles.textSign,{
-                    color:'#009387'
+                    color:'#638467'
                    }]}
                   
                   >Sign Up</Text>
@@ -252,18 +240,7 @@ const {login} = useContext(AuthContext);
               justifyContent: 'space-around',
               marginTop: 10,
             }}>
-            <TouchableOpacity>
-              <MaterialCommunityIcons name="google" color="black" size={35} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <MaterialCommunityIcons name="facebook" color="black" size={35} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <MaterialCommunityIcons name="linkedin" color="black" size={35} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <MaterialCommunityIcons name="github" color="black" size={35} />
-            </TouchableOpacity>
+            
             </Animatable.View>
              </View>
           </Animatable.View>
@@ -292,7 +269,8 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'flex-end',
       paddingHorizontal: 20,
-      paddingBottom: 50
+      paddingBottom: 50,
+      alignItems:'center'
   },
   footer: {
       flex: 3,
@@ -305,7 +283,8 @@ const styles = StyleSheet.create({
   text_header: {
       color: '#fff',
       fontWeight: 'bold',
-      fontSize: 30
+      fontSize: 30,
+      justifyContent:'center'
   },
   text_footer: {
       color: '#05375a',
@@ -315,14 +294,14 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       marginTop: 10,
       borderBottomWidth: 1,
-      borderBottomColor: '#f2f2f2',
+      borderBottomColor: '#638467',
       paddingBottom: 5
   },
   actionError: {
       flexDirection: 'row',
       marginTop: 10,
       borderBottomWidth: 1,
-      borderBottomColor: '#FF0000',
+      borderBottomColor: '#638467',
       paddingBottom: 5
   },
   textInput: {
@@ -352,6 +331,6 @@ const styles = StyleSheet.create({
   },
    errorTxt:{
     fontSize:12,
-    color:'#FF0D10',
+    color:'#FF0000',
   }
 });

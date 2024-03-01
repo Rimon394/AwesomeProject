@@ -1,5 +1,7 @@
 import React, { useState,useContext,createContext}from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+
 import { 
     View, 
     Text, 
@@ -9,7 +11,7 @@ import {
     StyleSheet ,
     StatusBar,
     ScrollView,
-    Alert,
+    
   
     
 } from 'react-native';
@@ -20,6 +22,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import { AuthContext } from '../navigation/AuthProvider';
+import SocialButton from '../components/ScocialButton';
 
  
 const SignupSchema = Yup.object().shape({
@@ -40,7 +43,7 @@ password:Yup.string()
 const RegisterScreen =({navigation})=>{
   
 
-  const {register} = useContext(AuthContext);
+  const {register,  googleLogin} = useContext(AuthContext);
   
 
 
@@ -51,6 +54,7 @@ const RegisterScreen =({navigation})=>{
    check_textInputChange:false,
    secureTextEntry:true,
    confirm_secureTextEntry:true,
+   
   });
 // giving an condition for the eye close icon
   const textInputChange=(val)=>{
@@ -127,7 +131,7 @@ const RegisterScreen =({navigation})=>{
     
     <ScrollView>
         <View style={styles.container}>
-          <StatusBar backgroundColor='#009387'barStyle='light-content'/>
+          <StatusBar backgroundColor='#638467'barStyle='light-content'/>
           <View style={styles.header}>
             <Text style={styles.text_header}>Register Now !</Text>
           </View>
@@ -161,25 +165,6 @@ const RegisterScreen =({navigation})=>{
                 )}
 
 
-
-             {data.check_textInputChange ? 
-              <Animatable.View 
-                 animation='bounceIn'
-              
-              >
-
-
-               <Feather 
-               name='check-circle'
-               color='green'
-               size={20}
-             
-             />
-              </Animatable.View>
-
-
-
-             :null}
 
 
 
@@ -328,18 +313,23 @@ const RegisterScreen =({navigation})=>{
               marginTop: 10,
             }}>
 
-            <TouchableOpacity>
-              <MaterialCommunityIcons name="google" color="black" size={35} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <MaterialCommunityIcons name="facebook" color="black" size={35} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <MaterialCommunityIcons name="linkedin" color="black" size={35} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <MaterialCommunityIcons name="github" color="black" size={35} />
-            </TouchableOpacity>
+
+
+           {Platform.OS =='android' ?(
+             <View>
+             <SocialButton
+                buttonTitle="Sign In with Google"
+                btnType="google"
+                color="#de4d41"
+                backgroundColor="#f5e7ea"
+                onPress={()=>googleLogin()}
+  
+              />
+             </View>
+           ): null}
+
+          
+           
             </Animatable.View>
              </View>
           </Animatable.View>

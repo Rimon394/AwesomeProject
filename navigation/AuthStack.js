@@ -5,6 +5,7 @@ import OnboardingScreen from '../Screens/OnboardingScreen';
 import WelcomSceen from '../Screens/WelcomeScreen';
 import LoginScreen from '../Screens/LoginScreen';
 import RegisterScreen from '../Screens/RegisterScreen';
+import AddPostScreen from '../Screens/AddPostScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ const AuthStack = ({navigation}) => {
       <Stack.Screen name="Welcome" component={WelcomSceen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
+      
     </Stack.Navigator>
   );
 };
